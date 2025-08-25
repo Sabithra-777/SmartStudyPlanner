@@ -1,6 +1,6 @@
-# Smart Study Planner & Productivity Tracker
+# 📌 Smart Study Planner & Productivity Tracker
 
-## 📌 Project Brief
+## Project Brief
 A Java-based application that helps students plan study schedules, manage tasks, and track productivity.  
 (Current Phase: Console-based prototype)
 
@@ -8,9 +8,11 @@ A Java-based application that helps students plan study schedules, manage tasks,
 
 ## 🎯 Problem Statement
 Students often struggle with:
-- Organizing their study time
-- Staying consistent with schedules
-- Tracking productivity
+- Organizing their study time  
+- Staying consistent with schedules  
+- Tracking productivity  
+
+---
 
 ## 👥 Target Users
 - School & college students  
@@ -31,30 +33,30 @@ Students often struggle with:
 ## 📊 Class Diagram
 ```mermaid
 classDiagram
-class Task { 
-  -int id
-  -String title
-  -LocalDate dueDate
-  -Status status
-  +markComplete()
-  +weight()* int
-}
-class StudyTask { +subject: String }
-Task <|-- StudyTask
+    class Task { 
+      -int id
+      -String title
+      -LocalDate dueDate
+      -Status status
+      +markComplete()
+      +weight()* int
+    }
+    class StudyTask { +subject: String }
+    Task <|-- StudyTask
 
-class TaskRepository { 
-  +add(Task)
-  +findById(int) Task
-  +findAll() List~Task~
-}
-class InMemoryTaskRepository
-TaskRepository <|.. InMemoryTaskRepository
+    class TaskRepository { 
+      +add(Task)
+      +findById(int) Task
+      +findAll() List~Task~
+    }
+    class InMemoryTaskRepository
+    TaskRepository <|.. InMemoryTaskRepository
 
-class TaskService { 
-  +addStudyTask(String,String,LocalDate) Task
-  +complete(int) void
-  +list() List~Task~
-}
-TaskService --> TaskRepository
+    class TaskService { 
+      +addStudyTask(String,String,LocalDate) Task
+      +complete(int) void
+      +list() List~Task~
+    }
+    TaskService --> TaskRepository
 
-class ProductivityCalculator { +score(List~Task~, int) int }
+    class ProductivityCalculator { +score(List~Task~, int) int }
